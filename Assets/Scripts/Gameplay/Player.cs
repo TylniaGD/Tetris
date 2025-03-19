@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
+    Rigidbody2D rb;
 
     public GameObject currentTetromino;
 
@@ -25,7 +25,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (currentTetromino != null) rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        if (currentTetromino != null && rb.bodyType != RigidbodyType2D.Static)
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
     }
 
     public void SetCurrentTetromino(GameObject tetromino)
@@ -38,5 +39,5 @@ public class Player : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
-
+    // TODO: Add method for accelerating blocks, etc.
 }

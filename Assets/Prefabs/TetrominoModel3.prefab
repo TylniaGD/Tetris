@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5414386946078846002}
+  - component: {fileID: 607428970112649378}
   - component: {fileID: -5556147409253619388}
   - component: {fileID: 8200211190211378451}
   - component: {fileID: 6880500763771367132}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TetrominoModel3
-  m_TagString: Untagged
+  m_TagString: Tetromino
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,6 +43,22 @@ RectTransform:
   m_AnchoredPosition: {x: 290, y: 819}
   m_SizeDelta: {x: 203.80005, y: 307.6}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &607428970112649378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2793305290714228070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cce5ccac8f2040b174f7a181d492c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  tetrisGameManager: {fileID: 0}
+  floorTag: Floor
 --- !u!50 &-5556147409253619388
 Rigidbody2D:
   serializedVersion: 5
@@ -54,7 +71,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0.02
@@ -171,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 767716321436213794}
   - component: {fileID: 5677050956633486278}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6324939286729049529}
   - component: {fileID: 5531695327957402013}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6565451654186253521}
   - component: {fileID: 4021517364851829980}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9218570747803770232}
   - component: {fileID: 417517483832126038}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
