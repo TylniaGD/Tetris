@@ -27,6 +27,21 @@ public class SetPlayerNames : MonoBehaviour
         nameInputPanel.SetActive(false);
     }
 
+    public static SetPlayerNames Instance { get; private set; }
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     void Update()
     {
         if (gameStarter.gameIsStarted && !isNameInputPanelActive)
