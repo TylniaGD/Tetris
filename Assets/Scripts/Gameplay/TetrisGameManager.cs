@@ -1,29 +1,26 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
 public class TetrisGameManager : MonoBehaviour
 {
-    SetPlayerNames setPlayerNames;
+    public static event Action<Player,int> OnNextTetrominoChanged;
 
     [SerializeField] GameObject[] tetrominoes;
-
 
     [Header("Players")]
     [SerializeField] Player player1;
     [SerializeField] Player player2;
 
+    [Space]
 
-    [Header("Respawn Scope")]
-    [SerializeField] float maxX = 2.74f;
-    [SerializeField] float minX = -2.74f;
+    public int currentTetrominoID;
+    public int nextTetrominoID;
 
+    [Space]
+
+    [HideInInspector] public bool isNameInputCompleted;
+    [HideInInspector] public int numberDrawn;
     bool startTetrominoCreated = false;
-    LayerMask newTetrominoLayer;
-
-    void Awake()
-    {
-        StartCoroutine(FindSetPlayerNames());
-    }
 
     void Update()
     {
@@ -32,21 +29,22 @@ public class TetrisGameManager : MonoBehaviour
 
     public void SpawnNewTetromino(Player player)
     {
-        float randomX = Random.Range(minX, maxX);
-        Vector3 spawnPosition = new(player.transform.position.x + randomX, player.transform.position.y, player.transform.position.z);
+        Vector3 spawnPosition = new(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
-        int randomIndex = Random.Range(0, tetrominoes.Length);
-        GameObject newTetromino = Instantiate(tetrominoes[randomIndex], spawnPosition, Quaternion.identity);
+        GameObject newTetromino = Instantiate(tetrominoes[player.nextTetrominoID], spawnPosition, Quaternion.identity);
+
+        int randomIndex = UnityEngine.Random.Range(0, tetrominoes.Length);
+        player.nextTetrominoID = randomIndex;
+
+        OnNextTetrominoChanged?.Invoke(player, randomIndex);
 
         newTetromino.layer = player.gameObject.layer;
-        newTetrominoLayer = newTetromino.layer;
-
         player.SetCurrentTetromino(newTetromino);
     }
 
     void CreateInitialTetromino()
     {
-        if (setPlayerNames != null && setPlayerNames.isNameInputCompleted && !startTetrominoCreated)
+        if (isNameInputCompleted && !startTetrominoCreated)
         {
             startTetrominoCreated = true;
 
@@ -69,17 +67,5 @@ public class TetrisGameManager : MonoBehaviour
             SpawnNewTetromino(player2);
             return;
         }
-    }
-
-    IEnumerator FindSetPlayerNames()
-    {
-        yield return new WaitUntil(() => FindAnyObjectByType<SetPlayerNames>() != null);
-        setPlayerNames = FindAnyObjectByType<SetPlayerNames>();
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(player1.transform.position, maxX);
     }
 }

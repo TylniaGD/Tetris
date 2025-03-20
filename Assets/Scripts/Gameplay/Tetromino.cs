@@ -5,6 +5,10 @@ public class Tetromino : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    public int ID;
+
+    [Space]
+
     public bool isLanded = false;
 
     void Start()
@@ -16,7 +20,7 @@ public class Tetromino : MonoBehaviour
     {
         if (!isLanded)
         {
-            if ((collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Tetromino")) 
+            if ((collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Tetromino"))
                 && gameObject.CompareTag("Tetromino"))
             {
                 rb.bodyType = RigidbodyType2D.Static;

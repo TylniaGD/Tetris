@@ -1,9 +1,11 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class SetPlayerNames : MonoBehaviour
 {
-    [SerializeField] GameStarter gameStarter;
+    GameStarter gameStarter;
+    TetrisGameManager tetrisGameManager;
 
     [Space]
 
@@ -20,26 +22,16 @@ public class SetPlayerNames : MonoBehaviour
     [SerializeField] TMP_InputField inputField2;
 
     bool isNameInputPanelActive = false;
-    [HideInInspector] public bool isNameInputCompleted = false;
 
     void Start()
     {
         nameInputPanel.SetActive(false);
+        gameStarter = FindAnyObjectByType<GameStarter>();
     }
-
-    public static SetPlayerNames Instance { get; private set; }
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        StartCoroutine(FindTetrisGameManager());
     }
 
     void Update()
@@ -59,8 +51,14 @@ public class SetPlayerNames : MonoBehaviour
         player1NameText.text = inputField1.text;
         player2NameText.text = inputField2.text;
 
-        isNameInputCompleted = true;
+        tetrisGameManager.isNameInputCompleted = true;
 
         Destroy(nameInputPanel, 0.1f);
+    }
+
+    IEnumerator FindTetrisGameManager()
+    {
+        yield return new WaitUntil(() => FindAnyObjectByType<TetrisGameManager>() != null);
+        tetrisGameManager = FindAnyObjectByType<TetrisGameManager>();
     }
 }

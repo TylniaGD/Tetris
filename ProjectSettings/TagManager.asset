@@ -10,15 +10,15 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Wall
+  - 
   - Water
   - UI
-  - PlayerFloor1
-  - Tetromino
+  - 
+  - 
   - Player1
   - Player2
-  - PlayerFloor2
-  - 
+  - Player1UI
+  - Player2UI
   - 
   - 
   - 

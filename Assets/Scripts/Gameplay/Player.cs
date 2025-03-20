@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public GameObject currentTetrominoObject;
     public Tetromino currentTetromino;
 
+    public int nextTetrominoID;
+
     [Space]
 
     [SerializeField] float moveSpeed = 2f;
@@ -25,13 +27,13 @@ public class Player : MonoBehaviour
     {
         if (currentTetrominoObject != null)
         {
-            if (!areStartedComponentsFound) // Set components for started tetromino
+            if (!areStartedComponentsFound)
             {
                 areStartedComponentsFound = true;
                 SetComponents();
             }
 
-            if (currentTetromino.isLanded) // Create next tetromino for player
+            if (currentTetromino.isLanded)
             {
                 tetrisGameManager.AssignNextTetromino(currentTetrominoObject);
                 return;
