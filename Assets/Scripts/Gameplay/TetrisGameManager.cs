@@ -3,24 +3,22 @@ using UnityEngine;
 
 public class TetrisGameManager : MonoBehaviour
 {
-    [SerializeField] SetPlayerNames setPlayerNames;
+    SetPlayerNames setPlayerNames;
+
     [SerializeField] GameObject[] tetrominoes;
 
-    [Space]
 
+    [Header("Players")]
     [SerializeField] Player player1;
     [SerializeField] Player player2;
 
-    [Space]
 
-    [SerializeField] float newTetrominoCooldown = 6.5f;
-
-    [Space]
-
+    [Header("Respawn Scope")]
     [SerializeField] float maxX = 2.74f;
     [SerializeField] float minX = -2.74f;
 
     bool startTetrominoCreated = false;
+    LayerMask newTetrominoLayer;
 
     void Awake()
     {
@@ -30,8 +28,6 @@ public class TetrisGameManager : MonoBehaviour
     void Update()
     {
         CreateInitialTetromino();
-
-        // TODO: Add logic to create a new block after the previous one falls 
     }
 
     public void SpawnNewTetromino(Player player)
@@ -43,6 +39,7 @@ public class TetrisGameManager : MonoBehaviour
         GameObject newTetromino = Instantiate(tetrominoes[randomIndex], spawnPosition, Quaternion.identity);
 
         newTetromino.layer = player.gameObject.layer;
+        newTetrominoLayer = newTetromino.layer;
 
         player.SetCurrentTetromino(newTetromino);
     }
@@ -55,6 +52,22 @@ public class TetrisGameManager : MonoBehaviour
 
             SpawnNewTetromino(player1);
             SpawnNewTetromino(player2);
+        }
+    }
+
+    public void AssignNextTetromino(GameObject stoppedTetromino)
+    {
+        int tetrominoLayer = stoppedTetromino.layer;
+
+        if (tetrominoLayer == LayerMask.NameToLayer("Player1"))
+        {
+            SpawnNewTetromino(player1);
+            return;
+        }
+        else if (tetrominoLayer == LayerMask.NameToLayer("Player2"))
+        {
+            SpawnNewTetromino(player2);
+            return;
         }
     }
 

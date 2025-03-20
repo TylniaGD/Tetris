@@ -5,7 +5,7 @@ public class Tetromino : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    [SerializeField] string floorTag = "Floor";
+    public bool isLanded = false;
 
     void Start()
     {
@@ -14,10 +14,15 @@ public class Tetromino : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(floorTag) && gameObject.CompareTag("Tetromino"))
+        if (!isLanded)
         {
-            rb.bodyType = RigidbodyType2D.Static;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            if ((collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Tetromino")) 
+                && gameObject.CompareTag("Tetromino"))
+            {
+                rb.bodyType = RigidbodyType2D.Static;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                isLanded = true;
+            }
         }
     }
 }

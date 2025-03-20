@@ -4,34 +4,57 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
+    TetrisGameManager tetrisGameManager;
 
-    public GameObject currentTetromino;
+    public GameObject currentTetrominoObject;
+    public Tetromino currentTetromino;
 
     [Space]
 
     [SerializeField] float moveSpeed = 2f;
 
     Vector2 moveInput;
-    bool isRbFound = false;
+    bool areStartedComponentsFound = false;
+
+    void Start()
+    {
+        tetrisGameManager = FindAnyObjectByType<TetrisGameManager>();
+    }
 
     void Update()
     {
-        if (currentTetromino != null && !isRbFound)
+        if (currentTetrominoObject != null)
         {
-            rb = currentTetromino.GetComponent<Rigidbody2D>();
-            isRbFound = true;
+            if (!areStartedComponentsFound) // Set components for started tetromino
+            {
+                areStartedComponentsFound = true;
+                SetComponents();
+            }
+
+            if (currentTetromino.isLanded) // Create next tetromino for player
+            {
+                tetrisGameManager.AssignNextTetromino(currentTetrominoObject);
+                return;
+            }
         }
     }
 
     void FixedUpdate()
     {
-        if (currentTetromino != null && rb.bodyType != RigidbodyType2D.Static)
+        if (currentTetrominoObject != null && rb.bodyType != RigidbodyType2D.Static)
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
     }
 
     public void SetCurrentTetromino(GameObject tetromino)
     {
-        currentTetromino = tetromino;
+        currentTetrominoObject = tetromino;
+        SetComponents();
+    }
+
+    void SetComponents()
+    {
+        rb = currentTetrominoObject.GetComponent<Rigidbody2D>();
+        currentTetromino = currentTetrominoObject.GetComponent<Tetromino>();
     }
 
     public void OnMove(InputAction.CallbackContext context)

@@ -393,7 +393,7 @@ RectTransform:
   m_GameObject: {fileID: 6480382220380244876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.010049, y: 0.010049, z: 0.010049}
+  m_LocalScale: {x: 0.008627871, y: 0.008627871, z: 0.008627871}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4547629994584671097}
@@ -419,10 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419cce5ccac8f2040b174f7a181d492c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
-  tetrisGameManager: {fileID: 0}
-  floorTag: Floor
+  isLanded: 0
 --- !u!50 &-5961722642041262393
 Rigidbody2D:
   serializedVersion: 5
@@ -435,7 +432,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0.02
@@ -447,7 +444,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 0
+  m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &446524817759776603
@@ -484,7 +481,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 49.96714, y: 1.3880005}
+  m_Offset: {x: 51.242805, y: -0.7381668}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -494,7 +491,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 100.06572, y: 302.71033}
+  m_Size: {x: 90.71071, y: 298.458}
   m_EdgeRadius: 0
 --- !u!61 &6241632875975717234
 BoxCollider2D:
@@ -530,7 +527,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -50.661125, y: -100.628235}
+  m_Offset: {x: -49.810696, y: -104.03006}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -540,5 +537,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 101.45369, y: 98.67786}
+  m_Size: {x: 99.75283, y: 91.87421}
   m_EdgeRadius: 0
