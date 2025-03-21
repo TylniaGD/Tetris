@@ -59,10 +59,16 @@ public class Player : MonoBehaviour
         currentTetromino = currentTetrominoObject.GetComponent<Tetromino>();
     }
 
+    public void HardDrop(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            rb.gravityScale = 15f;
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
     }
-
-    // TODO: Add method for accelerating blocks, etc.
 }

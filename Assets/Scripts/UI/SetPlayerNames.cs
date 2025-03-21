@@ -48,6 +48,20 @@ public class SetPlayerNames : MonoBehaviour
 
     public void ApplyPlayerNames()
     {
+        string name1 = inputField1.text.Trim(); // Prevents entering only spaces 
+        string name2 = inputField2.text.Trim();
+
+        if (string.IsNullOrEmpty(name1))
+        {
+            inputField1.text = "CAN'T BE NULL";
+            return;
+        }
+        else if (string.IsNullOrEmpty(name2))
+        {
+            inputField2.text = "CAN'T BE NULL";
+            return;
+        }
+
         player1NameText.text = inputField1.text;
         player2NameText.text = inputField2.text;
 

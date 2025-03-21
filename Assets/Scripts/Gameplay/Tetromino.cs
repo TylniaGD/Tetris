@@ -25,7 +25,6 @@ public class Tetromino : MonoBehaviour
                 && gameObject.CompareTag("Tetromino"))
             {
                 rb.bodyType = RigidbodyType2D.Static;
-                rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 isLanded = true;
             }
         }
@@ -38,7 +37,6 @@ public class Tetromino : MonoBehaviour
         if (gameObject.CompareTag("Tetromino"))
         {
             rb.bodyType = RigidbodyType2D.Static;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
             endGame = true;
         }
     }

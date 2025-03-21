@@ -327,8 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419cce5ccac8f2040b174f7a181d492c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 2
   isLanded: 0
+  endGame: 0
 --- !u!50 &-7270718671752750031
 Rigidbody2D:
   serializedVersion: 5
@@ -343,7 +343,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_GravityScale: 0.02
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -352,9 +352,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_SleepingMode: 2
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &6940833548968263574
 BoxCollider2D:
@@ -390,7 +390,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 7.2900047, y: 49.58999}
+  m_Offset: {x: 7.6672745, y: 49.58996}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -400,7 +400,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 186.44342, y: 187.83131}
+  m_Size: {x: 193.23433, y: 192.35857}
   m_EdgeRadius: 0
 --- !u!1 &8581232438175784654
 GameObject:
