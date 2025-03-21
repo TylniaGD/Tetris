@@ -378,6 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTetrominoObject: {fileID: 0}
   currentTetromino: {fileID: 0}
+  nextTetrominoID: 0
   moveSpeed: 2
 --- !u!1 &519420028
 GameObject:
@@ -635,6 +636,10 @@ MonoBehaviour:
   - {fileID: 2793305290714228070, guid: 0e484980f859a144e96904be36bde303, type: 3}
   player1: {fileID: 1081285536}
   player2: {fileID: 501135674}
+  currentTetrominoID: 0
+  nextTetrominoID: 0
+  isNameInputCompleted: 0
+  numberDrawn: 0
 --- !u!4 &944405329
 Transform:
   m_ObjectHideFlags: 0
@@ -696,6 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTetrominoObject: {fileID: 0}
   currentTetromino: {fileID: 0}
+  nextTetrominoID: 0
   moveSpeed: 2
 --- !u!1 &1391284958
 GameObject:
@@ -741,7 +747,7 @@ GameObject:
   - component: {fileID: 1393533993}
   m_Layer: 0
   m_Name: UpperLine
-  m_TagString: Untagged
+  m_TagString: End
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -791,11 +797,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.021724105, y: 0}
+  m_Offset: {x: -0.23427226, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -805,7 +811,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9565518, y: 1}
+  m_Size: {x: 1.381648, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1393533994
 SpriteRenderer:

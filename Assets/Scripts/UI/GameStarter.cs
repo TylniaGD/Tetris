@@ -15,8 +15,7 @@ public class GameStarter : MonoBehaviour
         if (!gameIsStarted)
         {
             gameIsStarted = true;
-            Debug.Log("Game started");
-            Destroy(startButton);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
                 SetComponents();
             }
 
-            if (currentTetromino.isLanded)
+            if (currentTetromino.isLanded && !currentTetromino.endGame)
             {
                 tetrisGameManager.AssignNextTetromino(currentTetrominoObject);
                 return;

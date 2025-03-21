@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TetrisGameManager : MonoBehaviour
 {
-    public static event Action<Player,int> OnNextTetrominoChanged;
+    public static event Action<Player, int> OnNextTetrominoChanged;
 
     [SerializeField] GameObject[] tetrominoes;
 
@@ -69,3 +69,4 @@ public class TetrisGameManager : MonoBehaviour
         }
     }
 }
+
