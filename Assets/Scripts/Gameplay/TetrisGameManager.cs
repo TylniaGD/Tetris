@@ -23,28 +23,28 @@ public class TetrisGameManager : MonoBehaviour
     [HideInInspector] public bool isNameInputCompleted;
     [HideInInspector] public int numberDrawn;
     bool startTetrominoCreated = false;
-    bool isAddedToGrid = false;
+    //bool isAddedToGrid = false;
 
     void Update()
     {
         CreateInitialTetromino();
 
-        if (tetrominoManager != null)
-        {
-            if (tetrominoManager.isLanded && !isAddedToGrid)
-            {
-                foreach (Transform block in tetrominoManager.transform)
-                {
-                    Vector2 pos = new(Mathf.Round(block.position.x), Mathf.Round(block.position.y));
-                    Debug.Log($"Block Position: {pos.x}, {pos.y}");
-                    grid[(int)pos.x, (int)pos.y] = block;
-                }
+        //if (tetrominoManager != null)
+        //{
+        //    if (tetrominoManager.isLanded && !isAddedToGrid)
+        //    {
+        //        foreach (Transform block in tetrominoManager.transform)
+        //        {
+        //            Vector2 pos = new(Mathf.Round(block.position.x), Mathf.Round(block.position.y));
+        //            Debug.Log($"Block Position: {pos.x}, {pos.y}");
+        //            grid[(int)pos.x, (int)pos.y] = block;
+        //        }
 
-                isAddedToGrid = true;
+        //        isAddedToGrid = true;
 
-                CheckAndClearFullLines();
-            }
-        }
+        //        CheckAndClearFullLines();
+        //    }
+        //}
     }
     void CreateInitialTetromino()
     {
@@ -59,7 +59,7 @@ public class TetrisGameManager : MonoBehaviour
 
     public void SpawnNewTetromino(Player player)
     {
-        Vector3 spawnPosition = new(player.transform.position.x, player.transform.position.y - 1.1f, player.transform.position.z);
+        Vector3 spawnPosition = new(player.transform.position.x, player.transform.position.y - 1.4f, player.transform.position.z);
 
         GameObject newTetromino = Instantiate(tetrominoes[player.nextTetrominoID], spawnPosition, Quaternion.identity);
 
@@ -73,7 +73,7 @@ public class TetrisGameManager : MonoBehaviour
         newTetromino.layer = player.gameObject.layer;
         player.SetCurrentTetromino(newTetromino);
 
-        isAddedToGrid = false;
+        //isAddedToGrid = false;
     }
 
     public void AssignNextTetromino(GameObject stoppedTetromino)

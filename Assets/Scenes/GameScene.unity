@@ -463,11 +463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88169d7ca2e708a47867576b41e1549c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
+  playerID: 2
   currentTetrominoObject: {fileID: 0}
   currentTetromino: {fileID: 0}
   nextTetrominoID: 0
-  moveSpeed: 1.2
+  moveSpeed: 1.4
   isEndGame: 0
 --- !u!1 &519420028
 GameObject:
@@ -825,11 +825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88169d7ca2e708a47867576b41e1549c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
+  playerID: 1
   currentTetrominoObject: {fileID: 0}
   currentTetromino: {fileID: 0}
   nextTetrominoID: 0
-  moveSpeed: 1.2
+  moveSpeed: 1.4
   isEndGame: 0
 --- !u!1 &1251001991
 GameObject:
@@ -1974,6 +1974,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f0f18084-50ab-4331-a59a-5de5121dc7a2
     m_ActionName: 'Player/Player2HardDrop[/Keyboard/downArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1081285536}
+        m_TargetAssemblyTypeName: Player, GameplayAssembly
+        m_MethodName: OnRotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 381e8227-81c6-499c-9b78-867e64d826cb
+    m_ActionName: 'Player/Player1Rotate[/Keyboard/q,/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 501135674}
+        m_TargetAssemblyTypeName: Player, GameplayAssembly
+        m_MethodName: OnRotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1dfcbef1-d7f0-474b-9f89-b492800af16d
+    m_ActionName: 'Player/Player2Rotate[/Keyboard/leftArrow,/Keyboard/rightArrow]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

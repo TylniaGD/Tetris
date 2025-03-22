@@ -126,6 +126,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Player1Rotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""381e8227-81c6-499c-9b78-867e64d826cb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Player2Rotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""1dfcbef1-d7f0-474b-9f89-b492800af16d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -236,6 +254,50 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Player2HardDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c478d600-97ee-4b3b-8504-0daf9f7f827f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player1Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60e38356-804d-4cbb-b494-d1d85005d98d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player1Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""39a27500-8636-4dfe-89fa-b8746a384794"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player2Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""227ae056-290f-427c-9597-0d0a205ecfd7"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player2Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -827,6 +889,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Player2Move = m_Player.FindAction("Player2Move", throwIfNotFound: true);
         m_Player_Player1HardDrop = m_Player.FindAction("Player1HardDrop", throwIfNotFound: true);
         m_Player_Player2HardDrop = m_Player.FindAction("Player2HardDrop", throwIfNotFound: true);
+        m_Player_Player1Rotate = m_Player.FindAction("Player1Rotate", throwIfNotFound: true);
+        m_Player_Player2Rotate = m_Player.FindAction("Player2Rotate", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -924,6 +988,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Player2Move;
     private readonly InputAction m_Player_Player1HardDrop;
     private readonly InputAction m_Player_Player2HardDrop;
+    private readonly InputAction m_Player_Player1Rotate;
+    private readonly InputAction m_Player_Player2Rotate;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -951,6 +1017,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Player2HardDrop".
         /// </summary>
         public InputAction @Player2HardDrop => m_Wrapper.m_Player_Player2HardDrop;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Player1Rotate".
+        /// </summary>
+        public InputAction @Player1Rotate => m_Wrapper.m_Player_Player1Rotate;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Player2Rotate".
+        /// </summary>
+        public InputAction @Player2Rotate => m_Wrapper.m_Player_Player2Rotate;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -989,6 +1063,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Player2HardDrop.started += instance.OnPlayer2HardDrop;
             @Player2HardDrop.performed += instance.OnPlayer2HardDrop;
             @Player2HardDrop.canceled += instance.OnPlayer2HardDrop;
+            @Player1Rotate.started += instance.OnPlayer1Rotate;
+            @Player1Rotate.performed += instance.OnPlayer1Rotate;
+            @Player1Rotate.canceled += instance.OnPlayer1Rotate;
+            @Player2Rotate.started += instance.OnPlayer2Rotate;
+            @Player2Rotate.performed += instance.OnPlayer2Rotate;
+            @Player2Rotate.canceled += instance.OnPlayer2Rotate;
         }
 
         /// <summary>
@@ -1012,6 +1092,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Player2HardDrop.started -= instance.OnPlayer2HardDrop;
             @Player2HardDrop.performed -= instance.OnPlayer2HardDrop;
             @Player2HardDrop.canceled -= instance.OnPlayer2HardDrop;
+            @Player1Rotate.started -= instance.OnPlayer1Rotate;
+            @Player1Rotate.performed -= instance.OnPlayer1Rotate;
+            @Player1Rotate.canceled -= instance.OnPlayer1Rotate;
+            @Player2Rotate.started -= instance.OnPlayer2Rotate;
+            @Player2Rotate.performed -= instance.OnPlayer2Rotate;
+            @Player2Rotate.canceled -= instance.OnPlayer2Rotate;
         }
 
         /// <summary>
@@ -1340,6 +1426,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPlayer2HardDrop(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Player1Rotate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPlayer1Rotate(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Player2Rotate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPlayer2Rotate(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
                 SetComponents();
             }
 
-
             if (currentTetromino.isLanded && !isEndGame)
             {
                 tetrisGameManager.AssignNextTetromino(currentTetrominoObject);
@@ -71,7 +70,9 @@ public class Player : MonoBehaviour
         currentTetromino = currentTetrominoObject.GetComponent<Tetromino>();
     }
 
-    // -----
+    // -----XXXxxxXXX-----
+    // This should be in the code GameInputManager in UIScene assembly
+
     public void HardDrop(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -84,4 +85,6 @@ public class Player : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
     }
+
+ 
 }

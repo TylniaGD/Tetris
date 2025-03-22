@@ -43,15 +43,15 @@ public class EndScreen : MonoBehaviour
 
         Player[] players = FindObjectsByType<Player>(FindObjectsSortMode.None);
 
-        if (players.Length > 0)
+        foreach (Player player in players)
         {
-            // Sort so that the player further to the left (smaller X) is player1
-            Array.Sort(players, (p1, p2) => p1.transform.position.x.CompareTo(p2.transform.position.x));
-
-            player1 = players[0];
-            if (players.Length > 1)
+            if (player.playerID == 1 && player1 == null)
             {
-                player2 = players[1];
+                player1 = player;
+            }
+            else if (player.playerID == 2 && player2 == null)
+            {
+                player2 = player;
             }
         }
     }

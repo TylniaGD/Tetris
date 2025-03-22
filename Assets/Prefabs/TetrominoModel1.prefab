@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLanded: 0
-  endGame: 0
+  raycastDistance: 1.2
 --- !u!50 &-7270718671752750031
 Rigidbody2D:
   serializedVersion: 5

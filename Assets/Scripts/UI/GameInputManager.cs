@@ -9,8 +9,11 @@ public class GameInputManager : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Vector2 moveInput = context.ReadValue<Vector2>();
-        OnMoveInput?.Invoke(moveInput);
+        if (context.performed || context.canceled)
+        {
+            Vector2 moveInput = context.ReadValue<Vector2>();
+            OnMoveInput?.Invoke(moveInput);
+        }
     }
 
     public void OnHardDrop(InputAction.CallbackContext context)
