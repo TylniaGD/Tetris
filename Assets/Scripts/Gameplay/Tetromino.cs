@@ -8,7 +8,6 @@ public class Tetromino : MonoBehaviour
     [Space]
 
     public bool isLanded = false;
-    public bool endGame = false;
 
     void Start()
     {
@@ -17,8 +16,6 @@ public class Tetromino : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (endGame) return;
-
         if (!isLanded)
         {
             if ((collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Tetromino"))
@@ -27,17 +24,6 @@ public class Tetromino : MonoBehaviour
                 rb.bodyType = RigidbodyType2D.Static;
                 isLanded = true;
             }
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (endGame) return;
-
-        if (gameObject.CompareTag("Tetromino"))
-        {
-            rb.bodyType = RigidbodyType2D.Static;
-            endGame = true;
         }
     }
 }

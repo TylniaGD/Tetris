@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,14 +7,24 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     TetrisGameManager tetrisGameManager;
 
+    public int playerID;
+
+    [Space]
+
     public GameObject currentTetrominoObject;
     public Tetromino currentTetromino;
+
+    [Space]
 
     public int nextTetrominoID;
 
     [Space]
 
-    [SerializeField] float moveSpeed = 2f;
+    [SerializeField] float moveSpeed = 1.2f;
+
+    [Space]
+
+    public bool isEndGame = false;
 
     Vector2 moveInput;
     bool areStartedComponentsFound = false;
@@ -33,7 +44,8 @@ public class Player : MonoBehaviour
                 SetComponents();
             }
 
-            if (currentTetromino.isLanded && !currentTetromino.endGame)
+
+            if (currentTetromino.isLanded && !isEndGame)
             {
                 tetrisGameManager.AssignNextTetromino(currentTetrominoObject);
                 return;
@@ -59,6 +71,7 @@ public class Player : MonoBehaviour
         currentTetromino = currentTetrominoObject.GetComponent<Tetromino>();
     }
 
+    // -----
     public void HardDrop(InputAction.CallbackContext context)
     {
         if (context.performed)

@@ -27,7 +27,7 @@ public class UpdateNextTetrominoUI : MonoBehaviour
             tetrominoesUI[nextTetrominoID].SetActive(true);
         }
     }
-
+    
     void OnEnable()
     {
         TetrisGameManager.OnNextTetrominoChanged += SetNewTetrominoUI;

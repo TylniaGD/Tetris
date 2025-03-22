@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -21,14 +22,14 @@ public class EndScreen : MonoBehaviour
     {
         if (player1EndScreen != null && player2EndScreen != null)
         {
-            if (player1.currentTetromino != null && player2.currentTetromino != null)
+            if (player1 != null && player2 != null)
             {
-                if (player1.currentTetromino.endGame)
+                if (player1.isEndGame)
                 {
                     if (!player1EndScreen.activeSelf) player1EndScreen.SetActive(true);
                 }
 
-                if (player2.currentTetromino.endGame)
+                if (player2.isEndGame)
                 {
                     if (!player2EndScreen.activeSelf) player2EndScreen.SetActive(true);
                 }
@@ -41,8 +42,12 @@ public class EndScreen : MonoBehaviour
         yield return new WaitUntil(() => FindObjectsByType<Player>(FindObjectsSortMode.None).Length > 0);
 
         Player[] players = FindObjectsByType<Player>(FindObjectsSortMode.None);
+
         if (players.Length > 0)
         {
+            // Sort so that the player further to the left (smaller X) is player1
+            Array.Sort(players, (p1, p2) => p1.transform.position.x.CompareTo(p2.transform.position.x));
+
             player1 = players[0];
             if (players.Length > 1)
             {
