@@ -26,9 +26,14 @@ public class TetrisGameManager : MonoBehaviour
 
     [Space]
 
-    public List<Transform> activeBlocks = new();
-    readonly float rowHeight = 0.7f;
-    readonly int playfieldWidth = 11;
+    public List<Transform> player1ActiveBlocks = new();
+    public List<Transform> player2ActiveBlocks = new();
+
+    [Space]
+
+    public float gridSize = 0.5f;
+    public float columns = 22;
+    public float rows = 15;
 
     void Update()
     {
@@ -50,7 +55,7 @@ public class TetrisGameManager : MonoBehaviour
 
     void SpawnNewTetromino(Player player)
     {
-        Vector3 spawnPosition = new(player.transform.position.x, player.transform.position.y - 1.6f, player.transform.position.z);
+        Vector3 spawnPosition = new(player.transform.position.x, player.transform.position.y - 1.8f, player.transform.position.z);
 
         GameObject newTetromino = Instantiate(tetrominoes[player.nextTetrominoID], spawnPosition, Quaternion.identity, player.transform);
 
@@ -71,8 +76,8 @@ public class TetrisGameManager : MonoBehaviour
         {
             if (tetrominoLayer == LayerMask.NameToLayer("Player1"))
             {
-                AddTetrominoElementsToActiveBlocks(stoppedTetromino.transform);
-                CheckAndClearLines();
+                AddTetrominoElementsToActiveBlocks(stoppedTetromino.transform, player1ActiveBlocks);
+                CheckAndClearLines(player1ActiveBlocks);
                 SpawnNewTetromino(player1);
                 return;
             }
@@ -86,8 +91,8 @@ public class TetrisGameManager : MonoBehaviour
         {
             if (tetrominoLayer == LayerMask.NameToLayer("Player2"))
             {
-                AddTetrominoElementsToActiveBlocks(stoppedTetromino.transform);
-                CheckAndClearLines();
+                AddTetrominoElementsToActiveBlocks(stoppedTetromino.transform, player2ActiveBlocks);
+                CheckAndClearLines(player2ActiveBlocks);
                 SpawnNewTetromino(player2);
                 return;
             }
@@ -100,11 +105,11 @@ public class TetrisGameManager : MonoBehaviour
 
     bool IsSpawnPointClear(Player player)
     {
-        Collider2D hit = Physics2D.OverlapBox(player.transform.position, new Vector2(0.5f, 0.5f), 0);
+        Collider2D hit = Physics2D.OverlapBox(player.transform.position, new Vector2(1f, 1f), 0);
         return hit == null;
     }
 
-    void AddTetrominoElementsToActiveBlocks(Transform tetromino)
+    void AddTetrominoElementsToActiveBlocks(Transform tetromino, List<Transform> activeBlocks)
     {
         foreach (Transform block in tetromino)
         {
@@ -112,36 +117,51 @@ public class TetrisGameManager : MonoBehaviour
         }
     }
 
-     // ---
-
-    void CheckAndClearLines()
+    void CheckAndClearLines(List<Transform> activeBlocks)
     {
         if (activeBlocks.Count == 0) return;
 
-        float minY = activeBlocks.Min(block => block.position.y);
-        float maxY = activeBlocks.Max(block => block.position.y);
+        bool linesCleared;
 
-        float y = minY;
-
-        while (y <= maxY)
+        do
         {
-            if (IsLineFull(y))
+            linesCleared = false;
+
+            float minY = activeBlocks.Min(block => block.position.y);
+            float maxY = activeBlocks.Max(block => block.position.y);
+
+            List<float> linesToClear = new();
+
+            for (float y = minY; y <= maxY; y += gridSize)
             {
-                ClearLine(y);
-                ShiftBlocksDown(y);
-                continue; // Recheck the same line after shifting
+                if (IsLineFull(y, activeBlocks))
+                {
+                    linesToClear.Add(y);
+                }
             }
-            y += rowHeight;
-        }
+
+            if (linesToClear.Count > 0)
+            {
+                foreach (float y in linesToClear)
+                {
+                    ClearLine(y, activeBlocks);
+                }
+
+                ShiftBlocksDown(linesToClear.Min(), activeBlocks);
+
+                linesCleared = true;
+            }
+
+        } while (linesCleared);
     }
 
-    bool IsLineFull(float y)
+    bool IsLineFull(float y, List<Transform> activeBlocks)
     {
-        int blockCount = activeBlocks.Count(block => Mathf.Abs(block.position.y - y) < 0.1f);
-        return blockCount >= playfieldWidth;
+        int blockCount = activeBlocks.Count(block => Mathf.Abs(block.position.y - y) < 0.15f);
+        return blockCount >= 10; // Player grid width
     }
 
-    void ClearLine(float y)
+    void ClearLine(float y, List<Transform> activeBlocks)
     {
         activeBlocks.RemoveAll(block =>
         {
@@ -154,14 +174,47 @@ public class TetrisGameManager : MonoBehaviour
         });
     }
 
-    void ShiftBlocksDown(float fromY)
+    void ShiftBlocksDown(float fromY, List<Transform> activeBlocks)
     {
+        List<Transform> updatedBlocks = new(activeBlocks.Count);
+
         foreach (Transform block in activeBlocks)
         {
             if (block.position.y > fromY)
             {
-                block.position -= new Vector3(0, rowHeight, 0);
+                block.position -= new Vector3(0, gridSize, 0);
             }
+
+            block.position = new Vector3(
+                block.position.x,
+                Mathf.Round(block.position.y / gridSize) * gridSize,
+                block.position.z
+            );
+
+            updatedBlocks.Add(block);
+        }
+
+        activeBlocks.Clear();
+        activeBlocks.AddRange(updatedBlocks);
+    }
+
+
+
+    public Vector2 gridOffset = new(0, 0);
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        for (int x = 0; x <= columns; x++)
+        {
+            float posX = x * gridSize + gridOffset.x;
+            Gizmos.DrawLine(new Vector3(posX, gridOffset.y, 0), new Vector3(posX, rows * gridSize + gridOffset.y, 0));
+        }
+        for (int y = 0; y <= rows; y++)
+        {
+            float posY = y * gridSize + gridOffset.y;
+            Gizmos.DrawLine(new Vector3(gridOffset.x, posY, 0), new Vector3(columns * gridSize + gridOffset.x, posY, 0));
         }
     }
+
 }

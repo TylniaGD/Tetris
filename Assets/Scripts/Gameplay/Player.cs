@@ -56,7 +56,19 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         if (currentTetrominoObject != null && rb.bodyType != RigidbodyType2D.Static && !isEndGame)
+        {
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+          //  SnapToGrid();
+        }
+    }
+
+    public void SnapToGrid() // TODO: Add condition to make
+    {
+        Vector3 pos = currentTetrominoObject.transform.position;
+        pos.x = Mathf.Round(pos.x / 1) * 1;
+        pos.y = Mathf.Round(pos.y / 1) * 1;
+
+        currentTetrominoObject.transform.position = pos;
     }
 
     public void SetCurrentTetromino(GameObject tetromino)
@@ -76,7 +88,7 @@ public class Player : MonoBehaviour
 
     public void HardDrop(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && tetrisGameManager.isNameInputCompleted)
         {
             rb.gravityScale = 15f;
         }
@@ -90,7 +102,7 @@ public class Player : MonoBehaviour
     // In the future, implement Super Rotation System (SRS) for correct rotation
     public void Rotate(InputAction.CallbackContext context)
     {
-        if (context.performed && !isEndGame)
+        if (context.performed && !isEndGame && tetrisGameManager.isNameInputCompleted)
         {
             string key = context.control.name;
             if (key == "e" || key == "period") currentTetromino.transform.Rotate(0, 0, -rotationAmount);
