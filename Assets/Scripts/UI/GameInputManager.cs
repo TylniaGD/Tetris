@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class GameInputManager : MonoBehaviour
 {
+    // Not used yet (idea for replacement current tetromino control system)
+
     public static event Action<Vector2> OnMoveInput;
     public static event Action OnPlayerHardDrop;
 

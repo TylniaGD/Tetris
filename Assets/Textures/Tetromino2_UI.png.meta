@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 900df1d1742bc5844bfe44afdda9e680
+guid: f6898c368739b41168b8b2b13cc53a4a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3612284895511645498
-    second: Tetromino2_UI_0
+      213: -5757671297140586620
+    second: Zrzut ekranu 2025-03-23 o 19.24.30-2_0
   - first:
-      213: 1462318796539823625
-    second: Tetromino2_UI_1
+      213: -5549638832937884889
+    second: Zrzut ekranu 2025-03-23 o 19.24.30-2_1
   - first:
-      213: -6824364632750345463
-    second: Tetromino2_UI_2
+      213: 1103752576755004329
+    second: Zrzut ekranu 2025-03-23 o 19.24.30-2_2
   - first:
-      213: 4693320381093011834
-    second: Tetromino2_UI_3
+      213: 4271079783215299030
+    second: Zrzut ekranu 2025-03-23 o 19.24.30-2_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tetromino2_UI_0
+      name: Zrzut ekranu 2025-03-23 o 19.24.30-2_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 69
-        width: 48
-        height: 48
+        x: 7
+        y: 7
+        width: 98
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3d0b7849f9612230800000000000000
-      internalID: 3612284895511645498
+      spriteID: 4870970f574a810b0800000000000000
+      internalID: -5757671297140586620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tetromino2_UI_1
+      name: Zrzut ekranu 2025-03-23 o 19.24.30-2_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 69
-        width: 49
-        height: 48
+        x: 108
+        y: 7
+        width: 99
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9060220a2333b4410800000000000000
-      internalID: 1462318796539823625
+      spriteID: 723260b72e8bbf2b0800000000000000
+      internalID: -5549638832937884889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tetromino2_UI_2
+      name: Zrzut ekranu 2025-03-23 o 19.24.30-2_2
       rect:
         serializedVersion: 2
-        x: 111
-        y: 20
-        width: 48
-        height: 49
+        x: 208
+        y: 7
+        width: 100
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9033d27068cfa41a0800000000000000
-      internalID: -6824364632750345463
+      spriteID: 9a37761ee11515f00800000000000000
+      internalID: 1103752576755004329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tetromino2_UI_3
+      name: Zrzut ekranu 2025-03-23 o 19.24.30-2_3
       rect:
         serializedVersion: 2
-        x: 61
-        y: 20
-        width: 49
-        height: 48
+        x: 311
+        y: 6
+        width: 98
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7166243506022140800000000000000
-      internalID: 4693320381093011834
+      spriteID: 6d976e50f6ce54b30800000000000000
+      internalID: 4271079783215299030
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tetromino2_UI_0: 3612284895511645498
-      Tetromino2_UI_1: 1462318796539823625
-      Tetromino2_UI_2: -6824364632750345463
-      Tetromino2_UI_3: 4693320381093011834
+      Zrzut ekranu 2025-03-23 o 19.24.30-2_0: -5757671297140586620
+      Zrzut ekranu 2025-03-23 o 19.24.30-2_1: -5549638832937884889
+      Zrzut ekranu 2025-03-23 o 19.24.30-2_2: 1103752576755004329
+      Zrzut ekranu 2025-03-23 o 19.24.30-2_3: 4271079783215299030
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

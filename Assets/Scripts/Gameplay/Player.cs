@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     Vector2 moveInput;
     bool areStartedComponentsFound = false;
+    readonly float rotationAmount = 90f;
 
     void Start()
     {
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (currentTetrominoObject != null && rb.bodyType != RigidbodyType2D.Static)
+        if (currentTetrominoObject != null && rb.bodyType != RigidbodyType2D.Static && !isEndGame)
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
     }
 
@@ -70,8 +71,8 @@ public class Player : MonoBehaviour
         currentTetromino = currentTetrominoObject.GetComponent<Tetromino>();
     }
 
-    // -----XXXxxxXXX-----
-    // This should be in the code GameInputManager in UIScene assembly
+    // ----------
+    // This should be in the GameInputManager script in UIScene assembly
 
     public void HardDrop(InputAction.CallbackContext context)
     {
@@ -86,5 +87,14 @@ public class Player : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
- 
+    // In the future, implement Super Rotation System (SRS) for correct rotation
+    public void Rotate(InputAction.CallbackContext context)
+    {
+        if (context.performed && !isEndGame)
+        {
+            string key = context.control.name;
+            if (key == "e" || key == "period") currentTetromino.transform.Rotate(0, 0, -rotationAmount);
+            if (key == "q" || key == "comma") currentTetromino.transform.Rotate(0, 0, rotationAmount);
+        }
+    }
 }

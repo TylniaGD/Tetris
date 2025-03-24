@@ -1,11 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TetrisGameManager : MonoBehaviour
 {
     public static event Action<Player, int> OnNextTetrominoChanged;
-    Transform[,] grid = new Transform[10, 13];
-    Tetromino tetrominoManager;
 
     [SerializeField] GameObject[] tetrominoes;
 
@@ -23,57 +23,44 @@ public class TetrisGameManager : MonoBehaviour
     [HideInInspector] public bool isNameInputCompleted;
     [HideInInspector] public int numberDrawn;
     bool startTetrominoCreated = false;
-    //bool isAddedToGrid = false;
+
+    [Space]
+
+    public List<Transform> activeBlocks = new();
+    readonly float rowHeight = 0.7f;
+    readonly int playfieldWidth = 11;
 
     void Update()
-    {
-        CreateInitialTetromino();
-
-        //if (tetrominoManager != null)
-        //{
-        //    if (tetrominoManager.isLanded && !isAddedToGrid)
-        //    {
-        //        foreach (Transform block in tetrominoManager.transform)
-        //        {
-        //            Vector2 pos = new(Mathf.Round(block.position.x), Mathf.Round(block.position.y));
-        //            Debug.Log($"Block Position: {pos.x}, {pos.y}");
-        //            grid[(int)pos.x, (int)pos.y] = block;
-        //        }
-
-        //        isAddedToGrid = true;
-
-        //        CheckAndClearFullLines();
-        //    }
-        //}
-    }
-    void CreateInitialTetromino()
     {
         if (isNameInputCompleted && !startTetrominoCreated)
         {
             startTetrominoCreated = true;
 
-            SpawnNewTetromino(player1);
-            SpawnNewTetromino(player2);
+            CreateInitialTetromino(player1);
+            CreateInitialTetromino(player2);
         }
     }
 
-    public void SpawnNewTetromino(Player player)
+    void CreateInitialTetromino(Player player)
     {
-        Vector3 spawnPosition = new(player.transform.position.x, player.transform.position.y - 1.4f, player.transform.position.z);
+        player.nextTetrominoID = UnityEngine.Random.Range(0, tetrominoes.Length);
 
-        GameObject newTetromino = Instantiate(tetrominoes[player.nextTetrominoID], spawnPosition, Quaternion.identity);
+        SpawnNewTetromino(player);
+    }
 
-        tetrominoManager = newTetromino.GetComponent<Tetromino>();
+    void SpawnNewTetromino(Player player)
+    {
+        Vector3 spawnPosition = new(player.transform.position.x, player.transform.position.y - 1.6f, player.transform.position.z);
+
+        GameObject newTetromino = Instantiate(tetrominoes[player.nextTetrominoID], spawnPosition, Quaternion.identity, player.transform);
 
         int randomIndex = UnityEngine.Random.Range(0, tetrominoes.Length);
         player.nextTetrominoID = randomIndex;
 
-        OnNextTetrominoChanged?.Invoke(player, randomIndex);
+        OnNextTetrominoChanged?.Invoke(player, randomIndex); // Change UI for next tetromino
 
         newTetromino.layer = player.gameObject.layer;
         player.SetCurrentTetromino(newTetromino);
-
-        //isAddedToGrid = false;
     }
 
     public void AssignNextTetromino(GameObject stoppedTetromino)
@@ -84,6 +71,8 @@ public class TetrisGameManager : MonoBehaviour
         {
             if (tetrominoLayer == LayerMask.NameToLayer("Player1"))
             {
+                AddTetrominoElementsToActiveBlocks(stoppedTetromino.transform);
+                CheckAndClearLines();
                 SpawnNewTetromino(player1);
                 return;
             }
@@ -97,6 +86,8 @@ public class TetrisGameManager : MonoBehaviour
         {
             if (tetrominoLayer == LayerMask.NameToLayer("Player2"))
             {
+                AddTetrominoElementsToActiveBlocks(stoppedTetromino.transform);
+                CheckAndClearLines();
                 SpawnNewTetromino(player2);
                 return;
             }
@@ -109,37 +100,68 @@ public class TetrisGameManager : MonoBehaviour
 
     bool IsSpawnPointClear(Player player)
     {
-        Collider2D hit = Physics2D.OverlapBox(player.transform.position, new Vector2(1f, 1f), 0);
+        Collider2D hit = Physics2D.OverlapBox(player.transform.position, new Vector2(0.5f, 0.5f), 0);
         return hit == null;
     }
 
-    // --
-
-    void CheckAndClearFullLines()
+    void AddTetrominoElementsToActiveBlocks(Transform tetromino)
     {
-        for (int y = 0; y < grid.GetLength(1); y++)
+        foreach (Transform block in tetromino)
+        {
+            activeBlocks.Add(block);
+        }
+    }
+
+     // ---
+
+    void CheckAndClearLines()
+    {
+        if (activeBlocks.Count == 0) return;
+
+        float minY = activeBlocks.Min(block => block.position.y);
+        float maxY = activeBlocks.Max(block => block.position.y);
+
+        float y = minY;
+
+        while (y <= maxY)
         {
             if (IsLineFull(y))
             {
                 ClearLine(y);
+                ShiftBlocksDown(y);
+                continue; // Recheck the same line after shifting
+            }
+            y += rowHeight;
+        }
+    }
+
+    bool IsLineFull(float y)
+    {
+        int blockCount = activeBlocks.Count(block => Mathf.Abs(block.position.y - y) < 0.1f);
+        return blockCount >= playfieldWidth;
+    }
+
+    void ClearLine(float y)
+    {
+        activeBlocks.RemoveAll(block =>
+        {
+            if (Mathf.Abs(block.position.y - y) < 0.1f)
+            {
+                Destroy(block.gameObject);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    void ShiftBlocksDown(float fromY)
+    {
+        foreach (Transform block in activeBlocks)
+        {
+            if (block.position.y > fromY)
+            {
+                block.position -= new Vector3(0, rowHeight, 0);
             }
         }
     }
-    bool IsLineFull(int y)
-    {
-        for (int x = 0; x < 10; x++)
-        {
-            if (grid[x, y] == null) return false;
-        }
-        return true;
-    }
-    void ClearLine(int y)
-    {
-        for (int x = 0; x < 10; x++)
-        {
-            Destroy(grid[x, y].gameObject);
-            grid[x, y] = null;
-        }
-    }
 }
-

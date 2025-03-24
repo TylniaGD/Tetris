@@ -845,7 +845,7 @@ RectTransform:
   - {fileID: 1581016266}
   - {fileID: 937027358}
   - {fileID: 467108408}
-  - {fileID: 1315996095}
+  - {fileID: 1793674457}
   m_Father: {fileID: 1681659344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -906,7 +906,7 @@ MonoBehaviour:
   tetrominoesUI:
   - {fileID: 937027357}
   - {fileID: 467108407}
-  - {fileID: 1315996094}
+  - {fileID: 1793674456}
 --- !u!1 &362414315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,15 +2173,15 @@ RectTransform:
   m_GameObject: {fileID: 653831230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1201628, y: 0.9808676, z: 0.57679284}
+  m_LocalScale: {x: 1.1201628, y: 1.0789545, z: 0.57679284}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2108495819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.7436523, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -1.2, y: 3.2}
+  m_SizeDelta: {x: 84.358, y: 27.2237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &653831232
 MonoBehaviour:
@@ -2203,7 +2203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 900df1d1742bc5844bfe44afdda9e680, type: 3}
+  m_Texture: {fileID: 2800000, guid: f6898c368739b41168b8b2b13cc53a4a, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3474,78 +3474,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197717842}
   m_CullTransparentMesh: 1
---- !u!1 &1315996094
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1315996095}
-  - component: {fileID: 1315996097}
-  - component: {fileID: 1315996096}
-  m_Layer: 11
-  m_Name: Tetromino2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1315996095
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315996094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0921587, y: 0.95634586, z: 0.56237286}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 350652790}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.3, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1315996096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315996094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 900df1d1742bc5844bfe44afdda9e680, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &1315996097
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315996094}
-  m_CullTransparentMesh: 1
 --- !u!1 &1382414227
 GameObject:
   m_ObjectHideFlags: 0
@@ -4103,6 +4031,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f0f18084-50ab-4331-a59a-5de5121dc7a2
     m_ActionName: 'Player/Player2HardDrop[/Keyboard/downArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 381e8227-81c6-499c-9b78-867e64d826cb
+    m_ActionName: 'Player/Player1Rotate[/Keyboard/q,/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1dfcbef1-d7f0-474b-9f89-b492800af16d
+    m_ActionName: 'Player/Player2Rotate[/Keyboard/leftArrow,/Keyboard/rightArrow]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -5059,6 +4995,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792698235}
   m_CullTransparentMesh: 1
+--- !u!1 &1793674456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1793674457}
+  - component: {fileID: 1793674459}
+  - component: {fileID: 1793674458}
+  m_Layer: 10
+  m_Name: Tetromino2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1793674457
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793674456}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1201622, y: 1.0789559, z: 0.5767922}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 350652790}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.9, y: 3.199997}
+  m_SizeDelta: {x: 84.358, y: 27.2237}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1793674458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793674456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: f6898c368739b41168b8b2b13cc53a4a, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1793674459
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793674456}
+  m_CullTransparentMesh: 1
 --- !u!1 &1796605108
 GameObject:
   m_ObjectHideFlags: 0
@@ -5342,6 +5350,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f0f18084-50ab-4331-a59a-5de5121dc7a2
     m_ActionName: 'Player/Player2HardDrop[/Keyboard/downArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 381e8227-81c6-499c-9b78-867e64d826cb
+    m_ActionName: 'Player/Player1Rotate[/Keyboard/q,/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1dfcbef1-d7f0-474b-9f89-b492800af16d
+    m_ActionName: 'Player/Player2Rotate[/Keyboard/comma,/Keyboard/period]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

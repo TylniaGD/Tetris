@@ -766,6 +766,7 @@ MonoBehaviour:
   nextTetrominoID: 0
   isNameInputCompleted: 0
   numberDrawn: 0
+  activeBlocks: []
 --- !u!4 &944405329
 Transform:
   m_ObjectHideFlags: 0
@@ -1978,7 +1979,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081285536}
         m_TargetAssemblyTypeName: Player, GameplayAssembly
-        m_MethodName: OnRotate
+        m_MethodName: Rotate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1994,7 +1995,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 501135674}
         m_TargetAssemblyTypeName: Player, GameplayAssembly
-        m_MethodName: OnRotate
+        m_MethodName: Rotate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
