@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -58,17 +59,7 @@ public class Player : MonoBehaviour
         if (currentTetrominoObject != null && rb.bodyType != RigidbodyType2D.Static && !isEndGame)
         {
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
-          //  SnapToGrid();
         }
-    }
-
-    public void SnapToGrid() // TODO: Add condition to make
-    {
-        Vector3 pos = currentTetrominoObject.transform.position;
-        pos.x = Mathf.Round(pos.x / 1) * 1;
-        pos.y = Mathf.Round(pos.y / 1) * 1;
-
-        currentTetrominoObject.transform.position = pos;
     }
 
     public void SetCurrentTetromino(GameObject tetromino)

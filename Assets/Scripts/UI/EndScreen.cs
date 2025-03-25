@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EndScreen : MonoBehaviour
 {
+    [SerializeField] TetrisGameManager tetrisGameManager;
+
     [SerializeField] Player player1;
     [SerializeField] Player player2;
 
@@ -13,6 +15,7 @@ public class EndScreen : MonoBehaviour
     void Start()
     {
         StartCoroutine(FindPlayers());
+        StartCoroutine(FindTetrisGameManager());
 
         player1EndScreen.SetActive(false);
         player2EndScreen.SetActive(false);
@@ -35,6 +38,33 @@ public class EndScreen : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PlayAgain()
+    {
+        Debug.Log("dzialaj");
+        if (player1.isEndGame)
+        {
+            tetrisGameManager.ClearTetrominoElements(tetrisGameManager.player1ActiveBlocks);
+            if (!player1EndScreen.activeSelf) player1EndScreen.SetActive(false);
+            player1.isEndGame = false;
+            Debug.Log("player1");
+            return;
+        }
+
+        if (player2.isEndGame)
+        {
+            tetrisGameManager.ClearTetrominoElements(tetrisGameManager.player2ActiveBlocks);
+            if (!player2EndScreen.activeSelf) player2EndScreen.SetActive(false);
+            player2.isEndGame = false;
+            Debug.Log("player2");
+            return;
+        }
+    }
+    IEnumerator FindTetrisGameManager()
+    {
+        yield return new WaitUntil(() => FindAnyObjectByType<TetrisGameManager>() != null);
+        tetrisGameManager = FindAnyObjectByType<TetrisGameManager>();
     }
 
     IEnumerator FindPlayers()

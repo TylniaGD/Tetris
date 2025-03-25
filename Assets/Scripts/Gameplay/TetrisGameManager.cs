@@ -84,6 +84,7 @@ public class TetrisGameManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("koniec gry dla player1");
             player1.isEndGame = true;
         }
 
@@ -114,6 +115,14 @@ public class TetrisGameManager : MonoBehaviour
         foreach (Transform block in tetromino)
         {
             activeBlocks.Add(block);
+        }
+    }
+
+    public void ClearTetrominoElements(List<Transform> activeBlocks)
+    {
+        foreach (Transform block in activeBlocks)
+        {
+            Destroy(block.gameObject);
         }
     }
 
@@ -167,7 +176,14 @@ public class TetrisGameManager : MonoBehaviour
         {
             if (Mathf.Abs(block.position.y - y) < 0.1f)
             {
-                Destroy(block.gameObject);
+                Renderer blockRenderer = block.GetComponent<Renderer>();
+                if (blockRenderer != null)
+                {
+                    Color blockColor = blockRenderer.material.color;
+                    blockColor.a = 0.2f;
+                    blockRenderer.material.color = blockColor;
+                }
+                Destroy(block.gameObject, 0.15f);
                 return true;
             }
             return false;
