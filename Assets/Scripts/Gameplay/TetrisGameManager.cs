@@ -84,7 +84,6 @@ public class TetrisGameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("koniec gry dla player1");
             player1.isEndGame = true;
         }
 
@@ -115,14 +114,6 @@ public class TetrisGameManager : MonoBehaviour
         foreach (Transform block in tetromino)
         {
             activeBlocks.Add(block);
-        }
-    }
-
-    public void ClearTetrominoElements(List<Transform> activeBlocks)
-    {
-        foreach (Transform block in activeBlocks)
-        {
-            Destroy(block.gameObject);
         }
     }
 
@@ -213,8 +204,6 @@ public class TetrisGameManager : MonoBehaviour
         activeBlocks.Clear();
         activeBlocks.AddRange(updatedBlocks);
     }
-
-
 
     public Vector2 gridOffset = new(0, 0);
     void OnDrawGizmos()
