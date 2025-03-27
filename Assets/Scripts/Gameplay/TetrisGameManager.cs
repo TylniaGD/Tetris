@@ -183,7 +183,7 @@ public class TetrisGameManager : MonoBehaviour
     {
         activeBlocks.RemoveAll(block =>
         {
-            if (Mathf.Abs(block.position.y - y) < 0.1f)
+            if (Mathf.Abs(block.position.y - y) < 0.15f)
             {
                 Renderer blockRenderer = block.GetComponent<Renderer>();
                 if (blockRenderer != null)
