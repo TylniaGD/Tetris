@@ -2225,7 +2225,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 10
+  m_CharacterLimit: 8
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -3188,7 +3188,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.000007666178, y: 0, z: 36.508278, w: -12.169466}
+  m_margin: {x: -0.000007666178, y: 0, z: 31.56118, w: -12.169466}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3620,7 +3620,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.000007666178, y: 0, z: 36.508278, w: -12.169466}
+  m_margin: {x: -7.184189, y: 0, z: 41.54215, w: -12.169466}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3783,7 +3783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee73ae645385802419d9ba931279df15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1382414229}
 --- !u!1 &1410080953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,7 +4467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee73ae645385802419d9ba931279df15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1570804781}
 --- !u!1 &1581016265
 GameObject:
   m_ObjectHideFlags: 0
@@ -4703,7 +4701,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 10
+  m_CharacterLimit: 8
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []

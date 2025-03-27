@@ -1,7 +1,4 @@
-using NUnit.Framework;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EndScreen : MonoBehaviour
@@ -39,7 +36,7 @@ public class EndScreen : MonoBehaviour
         }
     }
 
-    IEnumerator FindPlayers()
+    IEnumerator FindPlayers() // Searching for players and assigning them based on ID
     {
         yield return new WaitUntil(() => FindObjectsByType<Player>(FindObjectsSortMode.None).Length > 0);
 

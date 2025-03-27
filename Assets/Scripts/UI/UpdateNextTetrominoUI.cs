@@ -14,7 +14,7 @@ public class UpdateNextTetrominoUI : MonoBehaviour
 
     void SetNewTetrominoUI(Player player, int nextTetrominoID)
     {
-        if (player.name + "UI" != LayerMask.LayerToName(gameObject.layer)) return;
+        if (player.name + "UI" != LayerMask.LayerToName(gameObject.layer)) return; // Preventing duplicate execution of the method
 
         foreach (GameObject tUI in tetrominoesUI)
         {

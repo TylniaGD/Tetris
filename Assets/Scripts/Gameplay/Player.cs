@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -57,9 +56,9 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (currentTetrominoObject != null && rb.bodyType != RigidbodyType2D.Static && !isEndGame)
+        if (currentTetrominoObject != null && rb.bodyType != RigidbodyType2D.Static && !isEndGame) 
         {
-            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y); // Tetromino move
         }
     }
 
@@ -99,7 +98,6 @@ public class Player : MonoBehaviour
             rb.gravityScale = 15f;
         }
     }
-
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
@@ -115,6 +113,7 @@ public class Player : MonoBehaviour
             if (key == "q" || key == "comma") currentTetromino.transform.Rotate(0, 0, rotationAmount);
         }
     }
+
 
     void OnDrawGizmos()
     {

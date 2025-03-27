@@ -3,7 +3,7 @@ using TMPro;
 
 public class ScoreUIManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI scoreText;
+    TextMeshProUGUI scoreText;
 
     void Start()
     {
@@ -12,7 +12,7 @@ public class ScoreUIManager : MonoBehaviour
 
     public void UpdateScoreUI(Player player, int newScore)
     {
-        if (player.name + "UI" != LayerMask.LayerToName(gameObject.layer)) return;
+        if (player.name + "UI" != LayerMask.LayerToName(gameObject.layer)) return; // Preventing duplicate execution of the method
 
         scoreText.text = "Score: " + newScore;
     }
