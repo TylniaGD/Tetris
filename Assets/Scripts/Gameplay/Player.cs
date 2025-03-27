@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -48,6 +46,7 @@ public class Player : MonoBehaviour
 
             if (currentTetromino.isLanded && !isEndGame)
             {
+                SnapToGrid();
                 tetrisGameManager.AssignNextTetromino(currentTetrominoObject);
                 return;
             }
@@ -60,6 +59,20 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
         }
+    }
+
+    void SnapToGrid()
+    {
+        Vector3 firstBlockPos = transform.GetChild(0).position;
+        Vector3 offset = transform.position - firstBlockPos;
+
+        Vector3 snappedPosition = new(
+            Mathf.Round((transform.position.x - offset.x) / tetrisGameManager.gridSize) * tetrisGameManager.gridSize + offset.x,
+            Mathf.Round((transform.position.y - offset.y) / tetrisGameManager.gridSize) * tetrisGameManager.gridSize + offset.y,
+            0
+        );
+
+        transform.position = snappedPosition;
     }
 
     public void SetCurrentTetromino(GameObject tetromino)
@@ -98,6 +111,15 @@ public class Player : MonoBehaviour
             string key = context.control.name;
             if (key == "e" || key == "period") currentTetromino.transform.Rotate(0, 0, -rotationAmount);
             if (key == "q" || key == "comma") currentTetromino.transform.Rotate(0, 0, rotationAmount);
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        foreach (var block in FindObjectsByType<Tetromino>(FindObjectsSortMode.None))
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(block.transform.position, 0.1f);
         }
     }
 }

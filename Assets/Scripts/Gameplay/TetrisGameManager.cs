@@ -205,7 +205,7 @@ public class TetrisGameManager : MonoBehaviour
         activeBlocks.AddRange(updatedBlocks);
     }
 
-    public Vector2 gridOffset = new(0, 0);
+    public Vector2 gridOffset = new(-6.66f, -4.5f);
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

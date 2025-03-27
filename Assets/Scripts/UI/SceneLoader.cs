@@ -7,6 +7,12 @@ public class SceneLoader : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
 
+        if (currentScene.name != "GameScene" || currentScene.name == "UIScene")
+        {
+            Debug.Log("Scene doesn't exist in code!");
+            return;
+        }
+
         if (currentScene.name == "GameScene" && !IsSceneLoaded("UIScene"))
         {
             SceneManager.LoadScene("UIScene", LoadSceneMode.Additive);
