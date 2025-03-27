@@ -1,2 +1,2 @@
 # Tetris
-Tetris prototype created as a test task for Radek Kozaczuk by Dominik Miaskowski
+Tetris prototype created as a test task for Radek K. by Dominik M.
