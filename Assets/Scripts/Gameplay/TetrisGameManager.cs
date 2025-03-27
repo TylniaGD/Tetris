@@ -78,7 +78,7 @@ public class TetrisGameManager : MonoBehaviour
             if (tetrominoLayer == LayerMask.NameToLayer("Player1"))
             {
                 AddTetrominoElementsToActiveBlocks(stoppedTetromino.transform, player1ActiveBlocks);
-                CheckAndClearLines(player1ActiveBlocks);
+                CheckAndClearLines(player1ActiveBlocks, player1);
                 SpawnNewTetromino(player1);
                 return;
             }
@@ -93,7 +93,7 @@ public class TetrisGameManager : MonoBehaviour
             if (tetrominoLayer == LayerMask.NameToLayer("Player2"))
             {
                 AddTetrominoElementsToActiveBlocks(stoppedTetromino.transform, player2ActiveBlocks);
-                CheckAndClearLines(player2ActiveBlocks);
+                CheckAndClearLines(player2ActiveBlocks, player2);
                 SpawnNewTetromino(player2);
                 return;
             }
@@ -110,20 +110,19 @@ public class TetrisGameManager : MonoBehaviour
         return hit == null;
     }
 
-    public void AddScore(int points, Player[] players)
+    public void AddScore(int points, Player player)
     {
-        foreach (Player p in players)
+        if (player == player1)
         {
-            if (p == player1)
-            {
-                player1.score += points;
-                OnScoreUpdated?.Invoke(player1, player1.score);
-            }
-            else if (p == player2)
-            {
-                player2.score += points;
-                OnScoreUpdated?.Invoke(player2, player2.score);
-            }
+            player1.score += points;
+            OnScoreUpdated?.Invoke(player1, player1.score);
+            return;
+        }
+        else if (player == player2)
+        {
+            player2.score += points;
+            OnScoreUpdated?.Invoke(player2, player2.score);
+            return;
         }
     }
 
@@ -135,7 +134,7 @@ public class TetrisGameManager : MonoBehaviour
         }
     }
 
-    void CheckAndClearLines(List<Transform> activeBlocks)
+    void CheckAndClearLines(List<Transform> activeBlocks, Player player)
     {
         if (activeBlocks.Count == 0) return;
 
@@ -165,7 +164,7 @@ public class TetrisGameManager : MonoBehaviour
                     ClearLine(y, activeBlocks);
                 }
 
-                AddScore(100, new Player[] { player1, player2 });
+                AddScore(100, player);
                 ShiftBlocksDown(linesToClear.Min(), activeBlocks);
 
                 linesCleared = true;

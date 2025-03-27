@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             if (currentTetromino.isLanded && !isEndGame)
             {
                 SnapToGrid();
-                tetrisGameManager.AddScore(30, new Player[] { this });
+                tetrisGameManager.AddScore(30, this);
                 tetrisGameManager.AssignNextTetromino(currentTetrominoObject);
                 return;
             }
