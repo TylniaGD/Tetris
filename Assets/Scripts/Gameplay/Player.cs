@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour
     public int nextTetrominoID;
 
     [Space]
-
+    public int score = 0;
     [SerializeField] float moveSpeed = 1.2f;
 
     [Space]
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
             if (currentTetromino.isLanded && !isEndGame)
             {
                 SnapToGrid();
+                tetrisGameManager.AddScore(30, new Player[] { this });
                 tetrisGameManager.AssignNextTetromino(currentTetrominoObject);
                 return;
             }

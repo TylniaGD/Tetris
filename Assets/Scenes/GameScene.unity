@@ -1076,6 +1076,7 @@ MonoBehaviour:
   currentTetrominoObject: {fileID: 0}
   currentTetromino: {fileID: 0}
   nextTetrominoID: 0
+  score: 0
   moveSpeed: 1.7
   isEndGame: 0
 --- !u!1 &519420028
@@ -2340,6 +2341,7 @@ MonoBehaviour:
   currentTetrominoObject: {fileID: 0}
   currentTetromino: {fileID: 0}
   nextTetrominoID: 0
+  score: 0
   moveSpeed: 1.7
   isEndGame: 0
 --- !u!1 &1131139561

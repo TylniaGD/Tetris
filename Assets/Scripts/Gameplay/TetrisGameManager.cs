@@ -6,6 +6,7 @@ using UnityEngine;
 public class TetrisGameManager : MonoBehaviour
 {
     public static event Action<Player, int> OnNextTetrominoChanged;
+    public static event Action<Player, int> OnScoreUpdated;
 
     [SerializeField] GameObject[] tetrominoes;
 
@@ -109,6 +110,23 @@ public class TetrisGameManager : MonoBehaviour
         return hit == null;
     }
 
+    public void AddScore(int points, Player[] players)
+    {
+        foreach (Player p in players)
+        {
+            if (p == player1)
+            {
+                player1.score += points;
+                OnScoreUpdated?.Invoke(player1, player1.score);
+            }
+            else if (p == player2)
+            {
+                player2.score += points;
+                OnScoreUpdated?.Invoke(player2, player2.score);
+            }
+        }
+    }
+
     void AddTetrominoElementsToActiveBlocks(Transform tetromino, List<Transform> activeBlocks)
     {
         foreach (Transform block in tetromino)
@@ -147,6 +165,7 @@ public class TetrisGameManager : MonoBehaviour
                     ClearLine(y, activeBlocks);
                 }
 
+                AddScore(100, new Player[] { player1, player2 });
                 ShiftBlocksDown(linesToClear.Min(), activeBlocks);
 
                 linesCleared = true;
